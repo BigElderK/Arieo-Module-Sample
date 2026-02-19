@@ -7,15 +7,17 @@ arieo_engine_project(
     arieo_sample_module
     PROJECT_TYPE module
 
-    PACKAGES
-        Arieo-Interface-Sample
-        Arieo-Core
-    INTERFACES
-        Arieo-Interface-Sample::arieo_sample_interface
-    PRIVATE_LIBS
-        Arieo-Core::arieo_core
+    DEPENDENCIES
+        PACKAGES
+            Arieo-Interface-Sample
+            Arieo-Core
+        INTERFACES
+            Arieo-Interface-Sample::arieo_sample_interface
+        PRIVATE_LIBS
+            Arieo-Core::arieo_core
 
     SOURCES
-        ${CMAKE_CURRENT_SOURCE_DIR}/private/src/*.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/private/src/*/*.cpp
+        CXX_SOURCES
+            ${CMAKE_CURRENT_SOURCE_DIR}/private/src/*.cpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/private/src/*/*.cpp
 )

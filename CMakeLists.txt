@@ -1,9 +1,16 @@
 cmake_minimum_required (VERSION 3.31)
 
 include($ENV{ARIEO_BUILD_ENV_PACKAGES_OUTPUT_DIR}/cmake/build_environment.cmake)
-project(ArieoEngine)
 
-arieo_engine_project(
+ARIEO_PACKAGE(
+    Arieo-Module-Sample
+    CATEGORY 02_engine
+    DEPENDS
+        https://github.com/BigElderK/Arieo-Core.git@main
+        https://github.com/BigElderK/Arieo-Interface-Sample.git@main
+)
+
+ARIEO_ENGINE_PROJECT(
     arieo_sample_module
     PROJECT_TYPE module
 
@@ -11,9 +18,8 @@ arieo_engine_project(
         ARIEO_PACKAGES
             Arieo-Core
             Arieo-Interface-Sample
-        INTERFACES
-            Arieo-Interface-Sample::arieo_sample_interface
         PRIVATE_LIBS
+            Arieo-Interface-Sample::arieo_sample_interface
             Arieo-Core::arieo_core
 
     SOURCES

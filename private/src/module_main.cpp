@@ -12,8 +12,8 @@ namespace Arieo
 
         static struct DllLoader
         {
-            Sample sample_instance;
-            Sample2 sample_instance_2;
+            Base::Instance<Sample> sample_instance;
+            Base::Instance<Sample2> sample_instance_2;
             // Interface::ISample sample_interface;
 
             DllLoader()
@@ -25,9 +25,9 @@ namespace Arieo
                 //     "sample_1", 
                 //     &sample_interface
                 // );
-                Core::ModuleManager::registerInterface<Interface::Sample::ISample>(
+                Core::ModuleManager::registerInstance<Interface::Sample::ISample, Sample2>(
                     "sample_2", 
-                    &sample_instance_2
+                    sample_instance_2
                 );
             }
 
@@ -36,8 +36,8 @@ namespace Arieo
                 // Core::ModuleManager::unregisterInterface<Interface::ISample>(
                 //     &sample_interface
                 // );
-                Core::ModuleManager::unregisterInterface<Interface::Sample::ISample>(
-                    &sample_instance_2
+                Core::ModuleManager::unregisterInstance<Interface::Sample::ISample, Sample2>(
+                    sample_instance_2
                 );
             }
         } dll_loader;

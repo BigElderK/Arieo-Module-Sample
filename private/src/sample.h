@@ -10,7 +10,7 @@ namespace Arieo
         int doSomthing_2(int i1, int i2);
     };
 
-    class Sample2
+    class Sample2 final
         : public Interface::Sample::ISample
     {
     public:

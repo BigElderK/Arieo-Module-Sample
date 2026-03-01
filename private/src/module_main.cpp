@@ -12,8 +12,10 @@ namespace Arieo
 
         static struct DllLoader
         {
-            Base::Instance<Sample> sample_instance;
-            Base::Instance<Sample2> sample_instance_2;
+            // Base::Interop::SharedRef<Interface::Sample::ISample> sample_instance = Base::Interop::createInstance<Interface::Sample::ISample, Sample>();
+            // Sample* sample_instance_ptr = sample_instance.castToInstance<Sample>();
+            Sample2 sample_instance_2_obj;
+            Base::Interop::SharedRef<Interface::Sample::ISample> sample_instance_2 = Base::Interop::makePersistentShared<Interface::Sample::ISample>(sample_instance_2_obj);
             // Interface::ISample sample_interface;
 
             DllLoader()
@@ -25,8 +27,8 @@ namespace Arieo
                 //     "sample_1", 
                 //     &sample_interface
                 // );
-                Core::ModuleManager::registerInstance<Interface::Sample::ISample, Sample2>(
-                    "sample_2", 
+                Core::ModuleManager::registerInterface<Interface::Sample::ISample>(
+                    "sample_2",
                     sample_instance_2
                 );
             }
@@ -36,7 +38,7 @@ namespace Arieo
                 // Core::ModuleManager::unregisterInterface<Interface::ISample>(
                 //     &sample_interface
                 // );
-                Core::ModuleManager::unregisterInstance<Interface::Sample::ISample, Sample2>(
+                Core::ModuleManager::unregisterInterface<Interface::Sample::ISample>(
                     sample_instance_2
                 );
             }

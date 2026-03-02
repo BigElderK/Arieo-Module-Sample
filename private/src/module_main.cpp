@@ -14,8 +14,10 @@ namespace Arieo
         {
             // Base::Interop::SharedRef<Interface::Sample::ISample> sample_instance = Base::Interop::createInstance<Interface::Sample::ISample, Sample>();
             // Sample* sample_instance_ptr = sample_instance.castToInstance<Sample>();
+            
             Sample2 sample_instance_2_obj;
-            Base::Interop::SharedRef<Interface::Sample::ISample> sample_instance_2 = Base::Interop::makePersistentShared<Interface::Sample::ISample>(sample_instance_2_obj);
+            Base::Interop::SharedRef<Interface::Sample::ISample> sample_instance_2 
+                = Base::Interop::makePersistentShared<Interface::Sample::ISample>(sample_instance_2_obj);
             // Interface::ISample sample_interface;
 
             DllLoader()
